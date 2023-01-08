@@ -1,7 +1,7 @@
 from random import randint
 
 
-def attack(char_name, char_class, char_power):
+def attack(char_name: str, char_class: str, char_power: int) -> str:
 
     if char_class == 'warrior':
         caused_damage = char_power['атака'] + randint(3, 5)
@@ -19,7 +19,7 @@ def attack(char_name, char_class, char_power):
         return (f'{char_name} нанёс урон противнику равный {caused_damage}')
 
 
-def defence(char_name, char_class, char_power):
+def defence(char_name: str, char_class: str, char_power: int) -> str:
 
     if char_class == 'warrior':
         blocked_defence = char_power['защита'] + randint(5, 10)
@@ -37,7 +37,7 @@ def defence(char_name, char_class, char_power):
         return (f'{char_name} блокировал {blocked_defence} урона')
 
 
-def special(char_name, char_class, char_power):
+def special(char_name: str, char_class: str, char_power: int) -> str:
 
     if char_class == 'warrior':
         applied_skill = char_power['выносливость'] + 25
@@ -58,7 +58,7 @@ def special(char_name, char_class, char_power):
                 f'«Защита {applied_skill}»')
 
 
-def start_training(char_name, char_class, char_power):
+def start_training(char_name: str, char_class: str, char_power: int) -> str:
 
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
@@ -75,7 +75,7 @@ def start_training(char_name, char_class, char_power):
           'special — чтобы использовать свою суперсилу.')
     print('Если не хочешь тренироваться, введи команду skip.')
 
-    cmd = None
+    cmd: str = None
 
     while cmd != 'skip':
 
@@ -93,10 +93,10 @@ def start_training(char_name, char_class, char_power):
     return 'Тренировка окончена.'
 
 
-def choice_char_class():
+def choice_char_class() -> str:
 
-    approve_choice = None
-    char_class = None
+    approve_choice: str = None
+    char_class: str = None
 
     while approve_choice != 'y':
 
@@ -125,14 +125,13 @@ def choice_char_class():
     return char_class
 
 
-if __name__ == '__main__':
-
-    char_power = {'выносливость':  80, 'атака': 5, 'защита': 10}
+def main():
+    char_power: dict[str, int] = {'выносливость': 80, 'атака': 5, 'защита': 10}
 
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
 
-    char_name = input('...назови себя: ')
+    char_name: str = input('...назови себя: ')
 
     print(f'Здравствуй, {char_name}! Сейчас твоя '
           f'выносливость — {char_power["выносливость"]}, '
@@ -141,6 +140,6 @@ if __name__ == '__main__':
     print('Ты можешь выбрать один из трёх путей силы:')
     print('Воитель, Маг, Лекарь')
 
-    char_class = choice_char_class()
+    char_class: str = choice_char_class()
 
     print(start_training(char_name, char_class, char_power))
